@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Button Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .option-group {
+            margin-bottom: 15px;
+            border: 1px solid #ebc3c3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .option-group label {
+            display: block; /* Make labels appear on new lines for better readability */
+            margin-bottom: 15px;
+        }
+        input[type="radio"] {
+            margin-right: 5px; /* Spacing between radio button and text */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose Your Favorite Programming Language:</h1>
+
+    <div class="option-group">
+        <p>Please select one:</p>
+
+        <label>
+            <input type="radio" id="lang-js" name="fav_language" value="javascript"> JavaScript
+        </label>
+
+        <label>
+            <input type="radio" id="lang-py" name="fav_language" value="python" checked> Python
+        </label>
+
+        <label>
+            <input type="radio" id="lang-java" name="fav_language" value="java"> Java
+        </label>
+
+        <label>
+            <input type="radio" id="lang-csharp" name="fav_language" value="csharp"> C#
+        </label>
+    </div>
+
+    <h1>Select Your Preferred Contact Method:</h1>
+
+    <div class="option-group">
+        <p>How should we contact you?</p>
+
+        <label>
+            <input type="radio" id="contact-email" name="contact_method" value="email"> Email
+        </label>
+
+        <label>
+            <input type="radio" id="contact-phone" name="contact_method" value="phone"> Phone
+        </label>
+
+        <label>
+            <input type="radio" id="contact-sms" name="contact_method" value="sms"> SMS
+        </label>
+    </div>
+
+</body>
+</html>
