@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flexbox</title>
+        <style>
+
+        
+        .container {
+    border: 2px solid black;
+    margin-bottom: 20px;
+    padding:  15px;
+        }
+
+        .flex-container{
+            display: flex;
+            height: auto;
+            margin-bottom: 10px;
+            border: 2px solid red;
+        }
+        .square{
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            margin: 5px;
+            font-weight: bolder;
+        }
+        .item-1{
+            background-color: #d0fffe;
+        }
+        .item-2{
+            background-color: 	#fffddb;
+        }
+        .item-3{
+            background-color: 	#e4ffde;
+        }
+        .item-4{
+            background-color: 	#ffd3fd;
+        }
+        .item-5{
+            background-color: 	#ffe7d3;
+        }
+        .item-6{
+            background-color: 	#FFCCE1;
+        }
+        .item-7{
+            background-color: 	#E0D7FF;
+        }
+        .item-8{
+            background-color: 	#FAFFC7;
+        }
+        .item-9{
+            background-color: 	#CCF1FF;
+        }
+        .item-10{
+            background-color: 	#D7EEFF;
+        }
+        
+    
+    </style>
+    </head>
+    <body>
+        <h1>FLEXBOX MASTERCLASS DEMO</h1>
+        <div class="container">
+            <h2>1. Default flex (row)</h2>
+            <div class="flex-container" style="justify-content:space-around;">
+                <div class="square item-1">1</div>
+                <div class="square item-2">2</div>
+                <div class="square item-3">3</div>
+                <div class="square item-4">4</div>
+                <div class="square item-5">5</div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>2. Flex direction - Column</h2>
+            <div class="flex-container" style="flex-direction: column; align-items: center; ">
+                <div class="square item-1" style="align-self: flex-start;">1</div>
+                <div class="square item-2" >2</div>
+                <div class="square item-3" style="align-self: flex-end;">3</div>
+                <div class="square item-4">4</div>
+                <div class="square item-5" style="align-self:flex-start;">5</div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>3. Flex wrap property</h2>
+            <div class="flex-container" style="flex-wrap: wrap;">
+                <div class="square item-1">1</div>
+                <div class="square item-2">2</div>
+                <div class="square item-3">3</div>
+                <div class="square item-4">4</div>
+                <div class="square item-5">5</div>
+                <div class="square item-6">6</div>
+                <div class="square item-7">7</div>
+                <div class="square item-8">8</div>
+                <div class="square item-9">9</div>
+                <div class="square item-10">10</div>
+            </div>
+        </div>
+    </body>
+</html>

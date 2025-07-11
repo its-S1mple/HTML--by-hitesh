@@ -1,56 +1,130 @@
-body{
+body {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif; /* Add a fallback font */
 }
-.container{
+
+.container {
     background: linear-gradient(#e66465, #9198e5);
     display: flex;
-}
-
-.content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+    flex-direction: column; /* Default: stack content vertically for mobile */
+    min-height: 100vh; /* Make sure container takes full viewport height */
+    overflow: hidden; /* Prevent content from breaking out during transitions */
+    align-items: center; /* Center items horizontally when in column mode */
+    justify-content: center; /* Center items vertically when in column mode */
+    text-align: center; /* Center text within the content area */
      
-
 }
 
-.reg-form{
+.container img {
+    /* Make image responsive */
+    width: 90%; /* Takes up 90% of the container width on small screens */
+    max-width: 400px; /* Max width for the image to prevent it from getting too big */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the whole image is visible */
+    margin-bottom: 20px; /* Space between image and content */
+     
+}
+
+.content {
+    display: flex;
+    flex-direction: column; /* Content elements stacked */
+    justify-content: center;
+    align-items: center; /* Center text and form elements */
+    padding: 20px; /* Add some padding around the content */
+    max-width: 500px; /* Limit content width to keep it readable */
+    width: 100%; /* Take full width up to max-width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    
+}
+
+.reg-form {
     display: flex;
     flex-direction: column;
     padding: 10px;
-   
-   
+    width: 100%; /* Allow form to take full width of its parent (.content) */
+    max-width: 300px; /* Max width for the form itself */
+    box-sizing: border-box;
+    
 }
-input{
-    padding: 10px 15px;
+
+input {
+    padding: 12px 15px; /* Slightly more padding for better touch targets */
     margin-bottom: 20px;
     border-radius: 5px;
     border: none;
-    width:250px;
+    width: 100%; /* Make input take full width of its parent (.reg-form) */
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
-.submit-button{
+
+.submit-button {
     background-color: #e66465;
-    padding: 10px 15px;
+    padding: 12px 15px; /* Consistent padding with input */
     border: none;
     border-radius: 5px;
     color: aliceblue;
-}
-
-p{
-    margin-bottom: 30px;
-    padding: 5px;
-    font-size: large;
-    font-weight: bold;
-    color:aliceblue;
+    font-size: 1em; /* Make font size relative */
+    cursor: pointer; /* Indicate it's clickable */
+    width: 100%; /* Make button take full width of its parent (.reg-form) */
+    box-sizing: border-box;
      
 }
-.submit-button:hover{
-    background-color: #9198e5;
-    box-shadow: 2px 2px 20px #e66465;
-}
-h1{
+
+p {
+    margin-bottom: 30px;
+    padding: 5px;
+    font-size: 1.1em; /* Use relative font size */
+    font-weight: bold;
     color: aliceblue;
+    line-height: 1.5; /* Improve readability */
+   
+}
+
+.submit-button:hover {
+    background-color: #9198e5;
+    box-shadow: 0px 0px 10px #e66465;
+}
+
+h1 {
+    color: aliceblue;
+    font-size: 2.5em; /* Larger, relative font size for prominence */
+    margin-bottom: 10px;
+     
+}
+
+/* --- Media Queries for Desktop Layout --- */
+@media (min-width: 768px) { /* Adjust this breakpoint if needed */
+    .container {
+        flex-direction: row; /* Switch to row layout on larger screens */
+        justify-content: space-around; /* Distribute space between image and content */
+        align-items: center; /* Vertically align items in the middle */
+        padding: 40px 20px; /* Add more padding on wider screens */
+        text-align: left; /* Reset text alignment for content block */
+    }
+
+    .container img {
+        width: 45%; /* Image takes 45% of the container width */
+        max-width: 600px; /* Allow image to be larger on desktop */
+        margin-right: 40px; /* Space between image and text content */
+        margin-bottom: 0; /* Remove bottom margin from column layout */
+    }
+
+    .content {
+        width: 45%; /* Content takes 45% of the container width */
+        max-width: 500px; /* Limit content width */
+        align-items: flex-start; /* Align text and form to the left */
+        padding: 0; /* Adjust padding for desktop */
+    }
+
+    .reg-form {
+        max-width: 400px; /* Allow form to be wider on desktop */
+    }
+
+    h1 {
+        font-size: 3.5em; /* Larger heading on desktop */
+    }
+
+    p {
+        font-size: 1.2em;
+    }
 }
