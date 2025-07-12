@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading animation</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #001d3d;
+        }
+
+        .logo{
+            border: 4px solid cyan;
+            width: 30px;
+            height: 30px;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            z-index: 10;
+            box-shadow: 0 0 10px cyan;
+            border-radius: 4px;
+            animation: loading 2s 0.1s ease-in-out infinite normal forwards;
+            animation-play-state: paused;
+            
+
+        }
+        .logo:hover{
+            animation-play-state: running;
+        }
+
+        @keyframes loading {
+            0%{
+               transform: rotateX(0) rotateY(0) rotateZ(0);
+            }
+            33%{
+                 transform:  rotateX(180deg) rotateY(0) rotateZ(0);
+            }
+            67%{
+                 transform: rotateX(180deg) rotateY(180deg) rotateZ(0);
+            }
+            100%{
+                 transform: rotateX(180deg) rotateY(180deg) rotateZ(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo"></div>
+</body>
+</html>

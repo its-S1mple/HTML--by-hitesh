@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Product Card Design</title>
+    <!-- Google Fonts: Inter for a modern, clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for utility classes (optional, but good for quick styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif; /* Applied Inter font */
+            background-color: #f0f2f5; /* A very light grey background for the page */
+        }
+
+        /* Main container for the card(s) */
+        .container {
+            background: linear-gradient(#e66465, #9198e5); /* Original gradient */
+            display: flex;
+            flex-direction: column; /* Default: stack cards vertically for mobile */
+            min-height: 100vh; /* Ensure full viewport height */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            padding: 20px; /* Add some padding around the container */
+            box-sizing: border-box; /* Include padding in width/height */
+        }
+
+        /* The Product Card itself */
+        .card {
+            background-color: #ffffff; /* Clean white background for card */
+            border-radius: 15px; /* Soft rounded corners */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.08); /* Subtle, multi-layer shadow */
+            width: 90%; /* Take up more width on small screens */
+            max-width: 350px; /* Max width for consistency on larger screens */
+            height: auto; /* Height adapts to content */
+            overflow: hidden; /* Ensures image and content stay within rounded corners */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+            display: flex; /* Use flex for internal layout */
+            flex-direction: column; /* Stack image and details vertically */
+        }
+
+        .card:hover {
+            transform: translateY(-8px); /* Card lifts slightly on hover */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+        }
+
+        /* Image container within the card */
+        .image {
+            width: 100%;
+            height: 200px; /* Fixed height for image container for consistent aspect ratio */
+            overflow: hidden; /* Ensures image doesn't overflow if it's too large */
+            border-top-left-radius: 15px; /* Match card border-radius */
+            border-top-right-radius: 15px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%; /* Fill the image container */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            display: block; /* Remove extra space below image */
+        }
+
+        /* Details section (product name, price, details button) */
+        .details {
+            display: flex;
+            flex-direction: column; /* Stack name, button, price */
+            padding: 15px 20px; /* Consistent padding */
+            gap: 10px; /* Space between elements */
+            box-sizing: border-box;
+        }
+
+        .product-name {
+            font-size: 1.4em; /* Slightly smaller, more refined */
+            font-weight: 600;
+            color: #333;
+            margin: 0; /* Remove default margins */
+        }
+
+        .price-tag {
+            font-size: 1.8em; /* Prominent price */
+            font-weight: 700;
+            color: #e66465; /* Highlight color from gradient */
+            margin: 0; /* Remove default margins */
+        }
+
+        .detail-btn {
+            background-color: #f0f2f5; /* Light background for a subtle button */
+            border-radius: 8px; /* Slightly rounded corners */
+            padding: 8px 15px;
+            border: none;
+            font-weight: 600;
+            color: #53d8fb; /* Pastel blue from your original palette */
+            cursor: pointer;
+            align-self: flex-end; /* Align to the right */
+            font-size: 0.9em;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .detail-btn:hover {
+            background-color: #53d8fb;
+            color: #ffffff; /* White text on hover */
+            box-shadow: 0px 4px 10px rgba(83, 216, 251, 0.4); /* Shadow matching button color */
+            transform: translateY(-2px); /* Subtle lift */
+        }
+
+        /* Bottom section (description and action buttons) */
+        .bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for buttons */
+            grid-template-rows: auto auto; /* Rows adapt to content */
+            gap: 15px; /* Space between grid items */
+            padding: 0 20px 20px; /* Padding for bottom section */
+            box-sizing: border-box;
+        }
+
+        .product-detail {
+            grid-column: 1 / -1; /* Span across all columns */
+            font-size: 0.95em;
+            line-height: 1.6; /* Improved readability */
+            color: #555; /* Softer text color */
+            margin: 0 0 10px 0; /* Adjust margin for spacing */
+        }
+
+        /* Action Buttons */
+        .bottom .buy,
+        .bottom .cart {
+            border-radius: 50px; /* Pill-shaped buttons */
+            border: none;
+            font-weight: 600;
+            padding: 12px 15px; /* Generous padding for touch targets */
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9em;
+            transition: all 0.3s ease-in-out; /* Smooth transitions */
+        }
+
+        .bottom .buy {
+            background-color: #73d58c; /* Green pastel */
+            color: #ffffff; /* White text */
+        }
+
+        .bottom .cart {
+            background-color: #ffd046; /* Yellow pastel */
+            color: #ffffff; /* White text */
+        }
+
+        .buy:hover {
+            transform: scale(1.05); /* Slightly less aggressive scale */
+            background-color: #5cb871; /* Darker green on hover */
+            box-shadow: 0px 4px 12px rgba(115, 213, 140, 0.5); /* Shadow matching button color */
+        }
+
+        .cart:hover {
+            transform: scale(1.05);
+            background-color: #f0a202; /* Darker yellow on hover */
+            box-shadow: 0px 4px 12px rgba(255, 208, 70, 0.5); /* Shadow matching button color */
+        }
+
+        /*Responsive adjustments for larger screens (if you add more cards later) */
+         @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 30px;
+                padding: 40px;
+            }
+            .card {
+                width: calc(50% - 15px);
+            }
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="image">
+                <!-- Placeholder image for better reliability -->
+                <img src="https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b82e5764-c9ce-4fec-b72a-d4ea98d28614/AIR+JORDAN+1+LOW+SE.png" alt="Sneaker Image">
+            </div>
+            <div class="details">
+                <h2 class="product-name">Air Jordan Nike Shoes</h2>
+                <button class="detail-btn">Details</button>
+                <h2 class="price-tag">
+                    $250 /-
+                </h2>
+            </div>
+            <div class="bottom">
+                <p class="product-detail">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, ipsum. This is a short description of the amazing product.
+                </p>
+                <button class="buy">BUY NOW</button>
+                <button class="cart">Add to Cart</button>
+            </div>
+        </div>
+        <!-- You can duplicate the .card div here to see multiple cards -->
+        <!-- <div class="card">...</div> -->
+         <div class="card">
+            <div class="image">
+                <!-- Placeholder image for better reliability -->
+                <img src="https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b82e5764-c9ce-4fec-b72a-d4ea98d28614/AIR+JORDAN+1+LOW+SE.png" alt="Sneaker Image">
+            </div>
+            <div class="details">
+                <h2 class="product-name">Air Jordan Nike Shoes</h2>
+                <button class="detail-btn">Details</button>
+                <h2 class="price-tag">
+                    $250 /-
+                </h2>
+            </div>
+            <div class="bottom">
+                <p class="product-detail">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, ipsum. This is a short description of the amazing product.
+                </p>
+                <button class="buy">BUY NOW</button>
+                <button class="cart">Add to Cart</button>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

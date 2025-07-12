@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positions</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+        .parent{
+            border: 2px solid red;
+            margin: 10px;
+            padding: 0;
+            background-color:#f39d56;
+            position: relative;
+            height: 100dvh;
+        }
+        .child{
+            border: 2px solid cyan;
+            width: 20%;
+            padding: 5px;
+            background-color: #8338ec;
+            box-shadow: 0 4px 12px cyan;
+            position: absolute;
+            bottom: 50%;
+            right: 50%;
+            translate: 50% 50%;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out ;
+        }
+        .child:hover{
+              transform: translateY(-5px) scale(1.09); 
+            background-color: #9d6be4;
+             box-shadow: 0 8px 16px rgb(10, 234, 234);
+             
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur veritatis libero ullam neque sint recusandae necessitatibus vel, commodi illo error.
+        <div class="child">
+            im child. in the center of the body
+        </div>
+    </div>
+</body>
+</html>
